@@ -1,7 +1,10 @@
-import { Template } from 'meteor/templating';
-import { ReactiveVar } from 'meteor/reactive-var';
+/*import {
+  Template
+} from 'meteor/templating';
+import {
+  ReactiveVar
+} from 'meteor/reactive-var';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 import './main.html';
 
 Template.hello.onCreated(function helloOnCreated() {
@@ -20,4 +23,14 @@ Template.hello.events({
     // increment the counter when button is clicked
     instance.counter.set(instance.counter.get() + 1);
   },
+});*/
+
+/*****************************************
+****************Calendar******************
+*****************************************/
+
+/***************Toggle*****************/
+$("#more").click(function(e){
+  e.preventDefault();
+  $("#moreField").slideToggle();
 });
