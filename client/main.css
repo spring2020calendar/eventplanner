@@ -1,1 +1,10 @@
-/* CSS declarations go here */
+body, .bg-dark-custom {
+	background-color: #0c0c0c;
+}
+
+.btn-custom, .btn-custom:active, .btn-custom:visited, .btn-custom:hover {
+	border: 0px;
+	border-radius: 23px;
+	background-color: #6ec0c0;
+	color: #fff;
+}
