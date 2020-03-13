@@ -8,3 +8,28 @@ body, .bg-dark-custom {
 	background-color: #6ec0c0;
 	color: #fff;
 }
+
+.a-custom, .a-custom:active, .a-custom:visited, .a-custom:hover {
+	color: #6ec0c0;
+}
+
+.text-white-custom {
+	color: #fff;
+	font-size: 11pt;
+}
+
+@media (max-width: 768px) {
+  .btn-custom {
+    padding:2px 4px;
+    font-size:80%;
+    line-height: 2;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+  .btn-custom {
+    padding:4px 9px;
+    font-size:90%;
+    line-height: 2.5;
+  }
+}
