@@ -1,36 +1,51 @@
-/*import {
-  Template
-} from 'meteor/templating';
-import {
-  ReactiveVar
-} from 'meteor/reactive-var';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './main.html';
+$(function () {
+  $('[data-format]').click(function (event) {
+    var input = {
+      title: $('#title').val(),
+      location: $('#location').val(),
+      description: $('#description').val(),
+      dateAlpha: $('#dateAlpha').val().replace(/[^0-9]+/g, ''),
+      dateOmega: $('#dateOmega').val().replace(/[^0-9]+/g, ''),
+      timeAlpha: $('#timeAlpha').val().replace(/[^0-9]+/g, ''),
+      timeOmega: $('#timeOmega').val().replace(/[^0-9]+/g, ''),
+    };
 
-Template.hello.onCreated(function helloOnCreated() {
-  // counter starts at 0
-  this.counter = new ReactiveVar(0);
-});
+    input.getAlpha = function () {
+      var result = this.dateAlpha;
 
-Template.hello.helpers({
-  counter() {
-    return Template.instance().counter.get();
-  },
-});
+      if (this.timeAlpha != '') {
+        result += 'T' + this.timeAlpha + '00';
+      }
 
-Template.hello.events({
-  'click button'(event, instance) {
-    // increment the counter when button is clicked
-    instance.counter.set(instance.counter.get() + 1);
-  },
-});*/
+      return result;
+    };
 
-/*****************************************
-****************Calendar******************
-*****************************************/
+    input.getOmega = function () {
+      var result = this.dateOmega;
 
-/***************Toggle*****************/
-$("#more").click(function(e){
-  e.preventDefault();
-  $("#moreField").slideToggle();
+      if (this.timeOmega != '') {
+        result += 'T' + this.timeOmega + '00';
+      }
+
+      return result;
+    };
+
+    if ($(this).data('format') === 'ical') {
+      var data = [
+        'BEGIN:VEVENT',
+        'UID:' + Math.random().toString(36).substring(8),
+        'SEQUENCE:0',
+        'TRANSP:OPAQUE',
+        'DTSTART;TZID=US/Central:' + input.getAlpha(),
+        'DTEND;TZID=US/Central:' + input.getOmega(),
+        'RRULE:FREQ=DAILY;UNTIL=' + input.getOmega(),
+        'SUMMARY:' + input.title,
+        'LOCATION:' + input.location,
+        'DESCRIPTION:' + input.description.replace(/\n/g, '\n'),
+        'END:VEVENT'
+      ];
+
+      $(this).attr('download', 'event.ics').attr('href', "data:text/calendar;charset=utf8," + escape(data.join("\n")));
+    }
+  });
 });

@@ -3,9 +3,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script> 
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <link href="client/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <script src="client/main.js"></script>
+<script src="client/errorcheck.js"></script>
 <link rel="stylesheet" href="client/main.css">
 <title>Twelvi | New Event</title>
 </head>
@@ -31,81 +33,95 @@
 </div>
 <div class="pt-4 h-50 container-fluid bg-white">
   <div class="row justify-content-center">
-    <div class="mb-2 mx-2 col-sm-3 rounded bg-info"> CALENDAR GOES HERE </div>
-    <div class="mb-2 mx-2 col-sm-8 bg-col-custom rounded">
+    <div class="py-4 mb-2 mx-2 col-sm-2 rounded bg-event-button-custom">
       <div class="container">
-        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#form"> See Modal with Form </button>
-      </div>
-      <div class="modal fade" id="form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header border-bottom-0">
-              <h5 class="modal-title" id="exampleModalLabel">New Event</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
-            </div>
-            <form>
-            <div class="modal-body">
-            <div class="form-group">
-              <input type="title" class="form-control" id="title1" aria-describedby="emailHelp" placeholder="Title">
-            </div>
-            <div class="form-group">
-              <input type="location" class="form-control" id="location1" placeholder="Location">
-            </div>
-            <!-----------toggle button--------------->
-            <form class="form">
-              <h2>All-day</h2>
-              <div class="switch-field">
-                <input type="radio" id="radio-one" data-toggle="expand" data-target="#expandExample" aria-expanded="false" aria-controls="collapseExample" name="switch-one" value="yes" checked/>
-                <label for="radio-one">Yes</label>
-                <input type="radio" id="radio-two" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" name="switch-one" value="no" />
-                <label for="radio-two">No</label>
-              </div>
-              <!---------end toggle button-------------> 
-              <!--------------toggle test---------------->
-              <p>
-                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"> Show </button>
-              <div class="collapse" id="collapseExample">
-              <!--------------date test---------------->
-              <div class="input-group date">
-              <div class="form-group px-3">
-                <label>Start date: </label>
-                <input type="text" class="form-control" value="12-02-2012">
-                <div class="input-group-addon"> <span class="glyphicon glyphicon-th"></span> </div>
-              </div>
-            </form>
-            <div class="form-group px-3">
-              <label>End date: </label>
-              <input type="text" class="form-control" value="12-02-2012">
-              <div class="input-group-addon"> <span class="glyphicon glyphicon-th"></span> </div>
-            </div>
-            <script src="client/js/datepicker.js"></script> 
-            <!--------------end date----------------> 
-          </div>
-          </p>
-          <script src="client/js/toggle.js"></script> 
-          <!-------------end toggle---------------> 
+        <div class="row justify-content-center">
+          <button type="button" class="my-1 w-100 btn btn-light" data-toggle="modal" data-target="#form">Create Event</button>
         </div>
-        <div class="modal-footer border-top-0 d-flex justify-content-center">
-          <button type="submit" class="btn btn-success">Submit</button>
+        <div class="row justify-content-center">
+          <button type="button" class="my-1 w-100 btn btn-light" data-toggle="modal1" data-target="#form">Delete Event</button>
         </div>
-        </form>
+        <div class="row justify-content-center">
+          <button type="button" class="my-1 w-100 btn btn-light" data-toggle="modal2" data-target="#form">Event List</button>
+        </div>
       </div>
     </div>
+    <div class="mb-2 mx-2 col-sm-8 bg-col-custom rounded">TEST</div>
   </div>
+  
+  <!-- modal -->
+  <div class="modal fade" id="form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header border-bottom-0">
+          <h5 class="modal-title" id="exampleModalLabel">Create Event</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+        </div>
+        <form>
+        <!-- create calendar event -->
+        <div class="modal-body">
+        <div class="container">
+        <div class="row">
+        <div class="px-2 col">
+        <form action="" method="post" data-validate="parsley">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="title">Event Title</label>
+                <input class="form-control" id="title" name="title" type="text" required/>
+              </div>
+              <div class="form-group">
+                <label for="location">Event Location</label>
+                <input class="form-control" id="location" name="location" type="text" required/>
+              </div>
+              <div class="form-group">
+                <label for="description">Event Description</label>
+                <textarea class="form-control" id="description" name="description" rows="8"></textarea>
+              </div>
+              <div class="row">
+                <div class="col-md-6 form-group">
+                  <label for="dateAlpha">Start Date</label>
+                  <input class="form-control" id="dateAlpha" name="dateAlpha" type="date" required/>
+                </div>
+                <div class="col-md-6 form-group">
+                  <label for="dateOmega">End Date</label>
+                  <input class="form-control" id="dateOmega" name="dateOmega" type="date" required/>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 form-group">
+                  <label for="timeAlpha">Start Time</label>
+                  <input class="form-control" id="timeAlpha" name="timeAlpha" type="time" required/>
+                </div>
+                <div class="col-md-6 form-group">
+                  <label for="timeOmega">End Time</label>
+                  <input class="form-control" id="timeOmega" name="timeOmega" type="time" required/>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row justify-content-center">
+          <div class="col">
+              <hr>
+			  <p class="text-center">
+            <button class="btn btn-light">
+            <a target="_blank" data-format="ical">Download iCal</a>
+            </button>
+				  </p>
+          </div>
+          <!-- end button col -->
+        </form>
+      </div>
+      <!-- end button row --> 
+    </div>
+    <!-- end cal container --> 
+  </div>
+  <!-- end modal body --> 
+</div>
+<!-- end modal content -->
+</div>
+<!-- end modal dialog-->
+</div>
+<!-- end modal start -->
 </div>
 </div>
-</div>
-</body>
-<template name="hello">
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
-</template>
-<template name="info">
-  <h2>Learn Meteor!</h2>
-  <ul>
-    <li><a href="https://www.meteor.com/try">Do the Tutorial</a></li>
-    <li><a href="http://guide.meteor.com">Follow the Guide</a></li>
-    <li><a href="https://docs.meteor.com">Read the Docs</a></li>
-    <li><a href="https://forums.meteor.com">Discussions</a></li>
-  </ul>
-</template>

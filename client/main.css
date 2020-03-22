@@ -4,6 +4,9 @@ body, .bg-dark-custom {
 .bg-col-custom {
   background-color: #FFFFFF;
 }
+.bg-event-button-custom {
+	background-color: #cfefef;
+}
 .btn-custom, .btn-custom:active, .btn-custom:visited, .btn-custom:hover {
   border: 0px;
   border-radius: 23px;
