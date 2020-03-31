@@ -5,6 +5,7 @@ $.validator.addMethod("currentAlpha", function (value, element) {
   var startDate;
   if ($('input[name=recurrence]:checked').val() == 'none') {
     startDate = new Date($('#dateAlpha').val());
+    startDate = new Date($('#dateAlpha').val());
     if (startDate < curDate) {
       return false;
     } else {
@@ -38,120 +39,126 @@ $.validator.addMethod("currentAlpha", function (value, element) {
 
 // end date cannot occur in past
 $.validator.addMethod("currentOmega", function (value, element) {
-  var curDate = new Date();
-  var endDate;
-  if ($('input[name=recurrence]:checked').val() == 'none') {
-    endDate = new Date($('#dateOmega').val());
-    if (endDate < curDate) {
-      return false;
-    } else {
-      return true;
-    }
-  } else if ($('input[name=recurrence]:checked').val() == 'daily') {
-    endDate = new Date($('#dateOmegaDaily').val());
-    if (endDate < curDate) {
-      return false;
-    } else {
-      return true;
-    }
-  } else if ($('input[name=recurrence]:checked').val() == 'weekly') {
-    endDate = new Date($('#dateOmegaWeekly').val());
-    if (endDate < curDate) {
-      return false;
-    } else {
-      return true;
-    }
-  } else if ($('input[name=recurrence]:checked').val() == 'monthly') {
-    endDate = new Date($('#dateOmegaMonthly').val());
-    if (endDate < curDate) {
-      return false;
-    } else {
-      return true;
+  if ($('input[name=endDaily]:checked').val() == 'byDaily') {
+    var curDate = new Date();
+    var endDate;
+    if ($('input[name=recurrence]:checked').val() == 'none') {
+      endDate = new Date($('#dateOmega').val());
+      if (endDate < curDate) {
+        return false;
+      } else {
+        return true;
+      }
+    } else if ($('input[name=recurrence]:checked').val() == 'daily') {
+      endDate = new Date($('#dateOmegaDaily').val());
+      if (endDate < curDate) {
+        return false;
+      } else {
+        return true;
+      }
+    } else if ($('input[name=recurrence]:checked').val() == 'weekly') {
+      endDate = new Date($('#dateOmegaWeekly').val());
+      if (endDate < curDate) {
+        return false;
+      } else {
+        return true;
+      }
+    } else if ($('input[name=recurrence]:checked').val() == 'monthly') {
+      endDate = new Date($('#dateOmegaMonthly').val());
+      if (endDate < curDate) {
+        return false;
+      } else {
+        return true;
+      }
     }
   } else {
-    return false;
+    return true;
   }
 });
 
 // start date cannot occur after end date
 $.validator.addMethod("minAlpha", function (value, element) {
-  var startDate;
-  var endDate;
-  if ($('input[name=recurrence]:checked').val() == 'none') {
-    startDate = new Date($('#dateAlpha').val());
-    endDate = new Date($('#dateOmega').val());
-    if (endDate < startDate) {
-      return false;
-    } else {
-      return true;
-    }
-  } else if ($('input[name=recurrence]:checked').val() == 'daily') {
-    startDate = new Date($('#dateAlphaDaily').val());
-    endDate = new Date($('#dateOmegaDaily').val());
-    if (endDate < startDate) {
-      return false;
-    } else {
-      return true;
-    }
-  } else if ($('input[name=recurrence]:checked').val() == 'weekly') {
-    startDate = new Date($('#dateAlphaWeekly').val());
-    endDate = new Date($('#dateOmegaWeekly').val());
-    if (endDate < startDate) {
-      return false;
-    } else {
-      return true;
-    }
-  } else if ($('input[name=recurrence]:checked').val() == 'monthly') {
-    startDate = new Date($('#dateAlphaMonthly').val());
-    endDate = new Date($('#dateOmegaMonthly').val());
-    if (endDate < startDate) {
-      return false;
-    } else {
-      return true;
+  if ($('input[name=endDaily]:checked').val() == 'byDaily') {
+    var startDate;
+    var endDate;
+    if ($('input[name=recurrence]:checked').val() == 'none') {
+      startDate = new Date($('#dateAlpha').val());
+      endDate = new Date($('#dateOmega').val());
+      if (endDate < startDate) {
+        return false;
+      } else {
+        return true;
+      }
+    } else if ($('input[name=recurrence]:checked').val() == 'daily') {
+      startDate = new Date($('#dateAlphaDaily').val());
+      endDate = new Date($('#dateOmegaDaily').val());
+      if (endDate < startDate) {
+        return false;
+      } else {
+        return true;
+      }
+    } else if ($('input[name=recurrence]:checked').val() == 'weekly') {
+      startDate = new Date($('#dateAlphaWeekly').val());
+      endDate = new Date($('#dateOmegaWeekly').val());
+      if (endDate < startDate) {
+        return false;
+      } else {
+        return true;
+      }
+    } else if ($('input[name=recurrence]:checked').val() == 'monthly') {
+      startDate = new Date($('#dateAlphaMonthly').val());
+      endDate = new Date($('#dateOmegaMonthly').val());
+      if (endDate < startDate) {
+        return false;
+      } else {
+        return true;
+      }
     }
   } else {
-    return false;
+    return true;
   }
 });
 
 //end date cannot occur before start date
 $.validator.addMethod("minOmega", function (value, element) {
-  var startDate;
-  var endDate;
-  if ($('input[name=recurrence]:checked').val() == 'none') {
-    startDate = new Date($('#dateAlpha').val());
-    endDate = new Date($('#dateOmega').val());
-    if (endDate < startDate) {
-      return false;
-    } else {
-      return true;
-    }
-  } else if ($('input[name=recurrence]:checked').val() == 'daily') {
-    startDate = new Date($('#dateAlphaDaily').val());
-    endDate = new Date($('#dateOmegaDaily').val());
-    if (endDate < startDate) {
-      return false;
-    } else {
-      return true;
-    }
-  } else if ($('input[name=recurrence]:checked').val() == 'weekly') {
-    startDate = new Date($('#dateAlphaWeekly').val());
-    endDate = new Date($('#dateOmegaWeekly').val());
-    if (endDate < startDate) {
-      return false;
-    } else {
-      return true;
-    }
-  } else if ($('input[name=recurrence]:checked').val() == 'monthly') {
-    startDate = new Date($('#dateAlphaMonthly').val());
-    endDate = new Date($('#dateOmegaMonthly').val());
-    if (endDate < startDate) {
-      return false;
-    } else {
-      return true;
+  if ($('input[name=endDaily]:checked').val() == 'byDaily') {
+    var startDate;
+    var endDate;
+    if ($('input[name=recurrence]:checked').val() == 'none') {
+      startDate = new Date($('#dateAlpha').val());
+      endDate = new Date($('#dateOmega').val());
+      if (endDate < startDate) {
+        return false;
+      } else {
+        return true;
+      }
+    } else if ($('input[name=recurrence]:checked').val() == 'daily') {
+      startDate = new Date($('#dateAlphaDaily').val());
+      endDate = new Date($('#dateOmegaDaily').val());
+      if (endDate < startDate) {
+        return false;
+      } else {
+        return true;
+      }
+    } else if ($('input[name=recurrence]:checked').val() == 'weekly') {
+      startDate = new Date($('#dateAlphaWeekly').val());
+      endDate = new Date($('#dateOmegaWeekly').val());
+      if (endDate < startDate) {
+        return false;
+      } else {
+        return true;
+      }
+    } else if ($('input[name=recurrence]:checked').val() == 'monthly') {
+      startDate = new Date($('#dateAlphaMonthly').val());
+      endDate = new Date($('#dateOmegaMonthly').val());
+      if (endDate < startDate) {
+        return false;
+      } else {
+        return true;
+      }
     }
   } else {
-    return false;
+    return true;
   }
 });
 
@@ -160,143 +167,106 @@ $.validator.addMethod("timeTest", function (value, element) {
   var endDate;
   var startTime;
   var endTime;
-  if ($('input[name=recurrence]:checked').val() == 'none') {
-    startDate = $('input[name=dateAlpha]').val();
-    endDate = $('input[name=dateOmega]').val();
-    startTime = $('input[name=timeAlpha]').val();
-    endTime = $('input[name=timeOmega]').val();
-    // if the start date is after the end date
-    if (startDate > endDate) {
-      return false;
-    }
-    if (startDate < endDate) {
-      return true;
-    }
-    if (startDate == null) {
-      return true;
-    }
-    if (endDate == null) {
-      return true;
-    }
-    // if the start date and end date are the same -- and end time is before the start time
-    else if (startDate == endDate && endTime < startTime) {
-      return false;
-    } else if (startDate == endDate && endTime > startTime) {
-      return true;
-    }
-  } else if ($('input[name=recurrence]:checked').val() == 'daily') {
-    startDate = $('input[name=dateAlphaDaily]').val();
-    endDate = $('input[name=dateOmegaDaily]').val();
-    startTime = $('input[name=timeAlphaDaily]').val();
-    endTime = $('input[name=timeOmegaWeekly]').val();
-    // if the start date is after the end date
-    if (startDate > endDate) {
-      return false;
-    }
-    if (startDate < endDate) {
-      return true;
-    }
-    if (startDate == null) {
-      return true;
-    }
-    if (endDate == null) {
-      return true;
-    }
-    // if the start date and end date are the same -- and end time is before the start time
-    else if (startDate == endDate && endTime < startTime) {
-      return false;
-    } else if (startDate == endDate && endTime > startTime) {
-      return true;
-    }
-  } else if ($('input[name=recurrence]:checked').val() == 'weekly') {
-    startDate = $('input[name=dateAlphaWeekly]').val();
-    endDate = $('input[name=dateOmegaWeekly]').val();
-    startTime = $('input[name=timeAlphaWeekly]').val();
-    endTime = $('input[name=timeOmegaWeekly]').val();
-    // if the start date is after the end date
-    if (startDate > endDate) {
-      return false;
-    }
-    if (startDate < endDate) {
-      return true;
-    }
-    if (startDate == null) {
-      return true;
-    }
-    if (endDate == null) {
-      return true;
-    }
-    // if the start date and end date are the same -- and end time is before the start time
-    else if (startDate == endDate && endTime < startTime) {
-      return false;
-    } else if (startDate == endDate && endTime > startTime) {
-      return true;
-    }
-  } else if ($('input[name=recurrence]:checked').val() == 'monthly') {
-    startDate = $('input[name=dateAlphaMonthly]').val();
-    endDate = $('input[name=dateOmegaMonthly]').val();
-    startTime = $('input[name=timeAlphaMonthly]').val();
-    endTime = $('input[name=timeOmegaMonthly]').val();
-    // if the start date is after the end date
-    if (startDate > endDate) {
-      return false;
-    }
-    if (startDate < endDate) {
-      return true;
-    }
-    if (startDate == null) {
-      return true;
-    }
-    if (endDate == null) {
-      return true;
-    }
-    // if the start date and end date are the same -- and end time is before the start time
-    else if (startDate == endDate && endTime < startTime) {
-      return false;
-    } else if (startDate == endDate && endTime > startTime) {
-      return true;
+  if ($('input[name=endDaily]:checked').val() == 'byDaily') {
+    if ($('input[name=recurrence]:checked').val() == 'none') {
+      startDate = $('input[name=dateAlpha]').val();
+      endDate = $('input[name=dateOmega]').val();
+      startTime = $('input[name=timeAlpha]').val();
+      endTime = $('input[name=timeOmega]').val();
+      // if the start date is after the end date
+      if (startDate > endDate) {
+        return false;
+      }
+      if (startDate < endDate) {
+        return true;
+      }
+      if (startDate == null) {
+        return true;
+      }
+      if (endDate == null) {
+        return true;
+      }
+      // if the start date and end date are the same -- and end time is before the start time
+      else if (startDate == endDate && endTime < startTime) {
+        return false;
+      } else if (startDate == endDate && endTime > startTime) {
+        return true;
+      }
+    } else if ($('input[name=recurrence]:checked').val() == 'daily') {
+      startDate = $('input[name=dateAlphaDaily]').val();
+      endDate = $('input[name=dateOmegaDaily]').val();
+      startTime = $('input[name=timeAlphaDaily]').val();
+      endTime = $('input[name=timeOmegaWeekly]').val();
+      // if the start date is after the end date
+      if (startDate > endDate) {
+        return false;
+      }
+      if (startDate < endDate) {
+        return true;
+      }
+      if (startDate == null) {
+        return true;
+      }
+      if (endDate == null) {
+        return true;
+      }
+      // if the start date and end date are the same -- and end time is before the start time
+      else if (startDate == endDate && endTime < startTime) {
+        return false;
+      } else if (startDate == endDate && endTime > startTime) {
+        return true;
+      }
+    } else if ($('input[name=recurrence]:checked').val() == 'weekly') {
+      startDate = $('input[name=dateAlphaWeekly]').val();
+      endDate = $('input[name=dateOmegaWeekly]').val();
+      startTime = $('input[name=timeAlphaWeekly]').val();
+      endTime = $('input[name=timeOmegaWeekly]').val();
+      // if the start date is after the end date
+      if (startDate > endDate) {
+        return false;
+      }
+      if (startDate < endDate) {
+        return true;
+      }
+      if (startDate == null) {
+        return true;
+      }
+      if (endDate == null) {
+        return true;
+      }
+      // if the start date and end date are the same -- and end time is before the start time
+      else if (startDate == endDate && endTime < startTime) {
+        return false;
+      } else if (startDate == endDate && endTime > startTime) {
+        return true;
+      }
+    } else if ($('input[name=recurrence]:checked').val() == 'monthly') {
+      startDate = $('input[name=dateAlphaMonthly]').val();
+      endDate = $('input[name=dateOmegaMonthly]').val();
+      startTime = $('input[name=timeAlphaMonthly]').val();
+      endTime = $('input[name=timeOmegaMonthly]').val();
+      // if the start date is after the end date
+      if (startDate > endDate) {
+        return false;
+      }
+      if (startDate < endDate) {
+        return true;
+      }
+      if (startDate == null) {
+        return true;
+      }
+      if (endDate == null) {
+        return true;
+      }
+      // if the start date and end date are the same -- and end time is before the start time
+      else if (startDate == endDate && endTime < startTime) {
+        return false;
+      } else if (startDate == endDate && endTime > startTime) {
+        return true;
+      }
     }
   } else {
-    return false;
-  }
-});
-
-$.validator.addMethod("dailyCheck", function (value, element) {
-  var startDate = new Date($('#dateAlpha').val());
-  var endDate = new Date($('#dateOmega').val());
-  var MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
-  var timeDiff = Math.abs(endDate.getTime() - startDate.getTime());
-  var difference = Math.ceil(timeDiff / MILLISECONDS_PER_DAY);
-  if (difference >= 1) {
     return true;
-  } else {
-    return false;
-  }
-});
-
-$.validator.addMethod("weeklyCheck", function (value, element) {
-  var startDate = new Date($('#dateAlpha').val());
-  var endDate = new Date($('#dateOmega').val());
-  var MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
-  var timeDiff = Math.abs(endDate.getTime() - startDate.getTime());
-  var difference = Math.ceil(timeDiff / MILLISECONDS_PER_DAY);
-  if (difference >= 7) {
-    return true;
-  } else {
-    return false;
-  }
-});
-
-$.validator.addMethod("monthlyCheck", function (value, element) {
-  var startDate = new Date($('#dateAlpha').val());
-  var endDate = new Date($('#dateOmega').val());
-  var MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
-  var timeDiff = Math.abs(endDate.getTime() - startDate.getTime());
-  var difference = Math.ceil(timeDiff / MILLISECONDS_PER_DAY);
-  if (difference >= 28) {
-    return true;
-  } else {
-    return false;
   }
 });
 
@@ -330,6 +300,12 @@ $(function () {
       recurrence: {
         required: true
       },
+      everyDayRadio: {
+        required: true
+      },
+      endDaily: {
+        required: true,
+      },
       dateAlpha: {
         required: true,
         // Specify that email should be validated
@@ -361,6 +337,30 @@ $(function () {
         date: true,
         currentAlpha: true,
         minAlpha: true
+      },
+      everyDay: {
+        required: {
+          depends: function () {
+            return $('input[name=everyDayRadio]:checked').val() == 'customDaily';
+          }
+        },
+        integerCheckEveryDay: {
+          depends: function () {
+            return $('input[name=everyDayRadio]:checked').val() == 'customDaily';
+          }
+        }
+      },
+      dailyCount: {
+        required: {
+          depends: function () {
+            return $('input[name=endDaily]:checked').val() == 'afterDaily';
+          }
+        },
+        integerCheckDailyCount: {
+          depends: function () {
+            return $('input[name=endDaily]:checked').val() == 'afterDaily';
+          }
+        }
       },
       dateOmega: {
         required: true,
@@ -443,7 +443,13 @@ $(function () {
       title: "Title is required.",
       location: "Location is required.",
       recurrence: {
-        required: "Recurrence is required"
+        required: "Recurrence is required."
+      },
+      everyDayRadio: {
+        required: "Type of daily recurrence required."
+      },
+      endDaily: {
+        required: "Type of end date required."
       },
       dateAlpha: {
         required: "Start and end date is required.",
@@ -464,6 +470,14 @@ $(function () {
         required: "Start and end date is required.",
         currentAlpha: "Start date occurs in the past.",
         minAlpha: "Start date occurs after end date."
+      },
+      everyDay: {
+        required: "Daily recurrence required.",
+        integerCheckEveryDay: "Input must be an integer greater than 0."
+      },
+      dailyCount: {
+        required: "End after number is required.",
+        integerCheckDailyCount: "Input must be an integer greater than 0."
       },
       dateOmega: {
         required: "Start and end date is required.",
@@ -547,26 +561,65 @@ $(function () {
 
       var location = $('#location').val();
       var description = $('#description').val();
-      var dateAlpha = $('#dateAlpha').val().replace(/[^0-9]+/g, '') + "T" + $('#timeAlpha').val().replace(/\D/g, '') + "00";
-      var dateOmega = $('#dateOmega').val().replace(/[^0-9]+/g, '') + "T" + $('#timeOmega').val().replace(/\D/g, '') + "00";
-
-      var startDate = new Date($('#dateAlpha').val());
-      var endDate = new Date($('#dateOmega').val());
-      var MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
-      var timeDiff = Math.abs(endDate.getTime() - startDate.getTime());
-
-      var to = "Test to";
-      var toEmail = "testemail@gmail.com";
 
       if ($('input[name=recurrence]:checked').val() == 'none') {
+        var dateAlpha = $('#dateAlpha').val().replace(/[^0-9]+/g, '') + "T" + $('#timeAlpha').val().replace(/\D/g, '') + "00";
+        var dateOmega = $('#dateOmega').val().replace(/[^0-9]+/g, '') + "T" + $('#timeOmega').val().replace(/\D/g, '') + "00";
+
+        var startDate = new Date($('#dateAlpha').val());
+        var endDate = new Date($('#dateOmega').val());
+        var MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
+        var timeDiff = Math.abs(endDate.getTime() - startDate.getTime());
+
+        var to = "Test to";
+        var toEmail = "testemail@gmail.com";
         var message = ["BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:${uuid()}\nCALSCALE:GREGORIAN\nBEGIN:VEVENT\nDTSTART;TZID='Hawaiian Standard Time':" + dateAlpha + "\nDTEND;TZID='Hawaiian Standard Time':" + dateOmega + "\nLOCATION:" + location + "\nORGANIZER;CN=" + to + ":MAILTO::" + toEmail + "\nDESCRIPTION:" + description + "\nSUMMARY:" + title + "\nEND:VEVENT\nEND:VCALENDAR"];
 
         window.open("data:text/calendar;charset=utf8," + escape(message));
       } else if ($('input[name=recurrence]:checked').val() == 'daily') {
-        var count = Math.ceil(timeDiff / MILLISECONDS_PER_DAY) + 1;
-        var message = ["BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:${uuid()}\nCALSCALE:GREGORIAN\nBEGIN:VEVENT\nDTSTART;TZID='Hawaiian Standard Time':" + dateAlpha + "\nDTEND;TZID='Hawaiian Standard Time':" + dateOmega + "\nLOCATION:" + location + "\nRRULE:FREQ=DAILY;COUNT=" + count + "\nORGANIZER;CN=" + to + ":MAILTO::" + toEmail + "\nDESCRIPTION:" + description + "\nSUMMARY:" + title + "\nEND:VEVENT\nEND:VCALENDAR"];
+
+        var dateAlpha = $('#dateAlphaDaily').val().replace(/[^0-9]+/g, '') + "T" + $('#timeAlphaDaily').val().replace(/\D/g, '') + "00";
+        var dateOmega = $('#dateOmegaDaily').val().replace(/[^0-9]+/g, '') + "T" + $('#timeOmegaDaily').val().replace(/\D/g, '') + "00";
+
+        var startDate = new Date($('#dateAlphaDaily').val());
+        var endDate = new Date($('#dateOmegaDaily').val());
+        var MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
+        var timeDiff = Math.abs(endDate.getTime() - startDate.getTime());
+
+        var to = "Test to";
+        var toEmail = "testemail@gmail.com";
+
+        var count;
+        var interval = document.getElementById('everyDay');
+
+        if ($('input[name=everyDayRadio]:checked').val() == 'customDaily') {
+          if ($('input[name=endDaily]:checked').val() == 'byDaily') {
+            if (interval.value == 1) {
+              count = Math.ceil(timeDiff / MILLISECONDS_PER_DAY) + 1;
+            } else {
+              count = getRecurrence(Math.ceil(timeDiff / MILLISECONDS_PER_DAY) + 1);
+            }
+            message = [
+              "Every day and by end date chosen"
+              + "\nCount: " + count
+            ];
+          } else if ($('input[name=endDaily]:checked').val() == 'afterDaily') {
+            message = ["Every day and end after chosen"];
+          } else if ($('input[name=endDaily]:checked').val() == 'noEndDaily') {
+            message = ["Every day and no end date is chosen"];
+          }
+        } else if ($('input[name=everyDayRadio]:checked') == 'everyWeekday') {
+          if ($('input[name=endDaily]:checked').val() == 'byDaily') {
+            var message = ["Every weekday and by end date chosen"];
+          } else if ($('input[name=endDaily]:checked').val() == 'afterDaily') {
+            var message = ["Every weekday and end after chosen"];
+          } else if ($('input[name=endDaily]:checked').val() == 'noEndDaily') {
+            var message = ["Every weekday and no end date is chosen"];
+          }
+        }
 
         window.open("data:text/calendar;charset=utf8," + escape(message));
+
       } else if ($('input[name=recurrence]:checked').val() == 'weekly') {
         var dateOmegaWeekly = $('#dateAlpha').val().replace(/[^0-9]+/g, '') + "T" + $('#timeOmega').val().replace(/\D/g, '') + "00";
         var count = Math.ceil(timeDiff / MILLISECONDS_PER_DAY) + 1;
