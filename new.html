@@ -1,16 +1,16 @@
 <!doctype html>
 <html>
 <head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
-<script src="showhide.js"></script>
-<script src="disable.js"></script>
-<script src="none.js"></script>
-<script src="daily.js"></script>
-<script src="weekly.js"></script>
-<script src="monthly.js"></script>
-<script src="yearly.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script> 
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script> 
+<script src="showhide.js"></script> 
+<script src="disable.js"></script> 
+<script src="none.js"></script> 
+<script src="daily.js"></script> 
+<script src="weekly.js"></script> 
+<script src="monthly.js"></script> 
+<script src="yearly.js"></script> 
 <script src="reoccurringevent.js"></script>
 <link rel="stylesheet" href="new.css">
 <meta charset="utf-8">
@@ -121,8 +121,8 @@
             <input type='radio' name="endDaily" value="afterDaily" onclick="endRadioButtonDaily()"/>
             End after:</label>
           <input type="text" class="dailyCount" id="dailyCount" name="dailyCount">
-          </input> occurrences
-          <br>
+          </input>
+          occurrences<br>
           <label>
             <input type='radio' name="endDaily" value="noEndDaily" onclick="endRadioButtonDaily()"/>
             No end date</label>
@@ -156,29 +156,32 @@
         </input>
         <br>
         <br>
+        <table id="daysOfWeekWeekly">
+        </table>
         <div class="container">
           <label class="option">
-            <input type="checkbox" name="dayName" value="sunday">
+            <input type="checkbox" name="dayName[]" id="SU" value="6">
             Sunday</label>
           <label class="option">
-            <input type="checkbox" name="dayName" value="monday">
+            <input type="checkbox" name="dayName[]" id="MO"  value="0">
             Monday</label>
           <label class="option">
-            <input type="checkbox" name="dayName" value="tuesday">
+            <input type="checkbox" name="dayName[]" id="TU"  value="1">
             Tuesday</label>
           <label class="option">
-            <input type="checkbox" name="dayName" value="wednesday">
+            <input type="checkbox" name="dayName[]" id="WE" value="2">
             Wednesday</label>
           <label class="option">
-            <input type="checkbox" name="dayName" value="thursday">
+            <input type="checkbox" name="dayName[]" id="TH" value="3">
             Thursday</label>
           <label class="option">
-            <input type="checkbox" name="dayName" value="friday">
+            <input type="checkbox" name="dayName[]" id="FR" value="4">
             Friday</label>
           <label class="option">
-            <input type="checkbox" name="dayName" value="saturday">
+            <input type="checkbox" name="dayName[]" id="SA" value="5">
             Saturday</label>
         </div>
+        </table>
         <p class='container'>
           <label>
             <input type='radio' name="endWeekly" value="byWeekly" onclick="endRadioButtonWeekly()"/>
@@ -190,8 +193,8 @@
             <input type='radio' name="endWeekly" value="afterWeekly" onclick="endRadioButtonWeekly()"/>
             End after:</label>
           <input type="text" class="weeklyCount" id="weeklyCount" name="weeklyCount">
-          </input> occurrences
-          <br>
+          </input>
+          occurrences<br>
           <label>
             <input type='radio' name="endWeekly" value="noEndWeekly" onclick="endRadioButtonWeekly()"/>
             No end date</label>
@@ -266,8 +269,8 @@
             <input type='radio' name="endMonthly" value="afterMonthly" onclick="endRadioButtonMonthy()"/>
             End after:</label>
           <input type="text" class="monthlyCount" id="monthlyCount" name="monthlyCount">
-          </input> occurrences
-          <br>
+          </input>
+          occurrences<br>
           <label>
             <input type='radio' name="endMonthly" value="noEndMonthly" onclick="endRadioButtonMonthy()"/>
             No end date</label>
